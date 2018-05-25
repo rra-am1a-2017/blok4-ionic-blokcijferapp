@@ -1,3 +1,33 @@
 page-home {
+  $bck-color: rgb(243, 243, 243);
+  $distance: 4px;
 
+  ion-grid {
+    border-top: $distance solid darken($bck-color, 20%);
+    border-bottom: $distance solid darken($bck-color, 20%);
+  }
+
+  [col-12] {
+    font-size: 2em;
+    font-weight: 800;
+  }
+
+  ion-col {
+    border-left: $distance solid lighten($bck-color, 20%);
+    background-color: $bck-color;
+    text-align: center;
+  }
+
+  ion-row {
+    margin-bottom: $distance;
+  }
+
+  ion-img {
+    width: 100%;
+     
+  }
+
+  ion-title {
+    text-align: center;
+  }
 }
