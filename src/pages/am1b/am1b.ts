@@ -16,37 +16,29 @@ import { GradesProvider } from '../../providers/grades/grades';
 })
 export class Am1bPage {
   // Fields zijn klassevariabelen. D
-  private users = [{"firstname": "Dagobert", 
-                    "infix": "",
-                    "lastname": "Duck",
-                    "age": 98,
-                    "residence": "Duckstad",
-                    "absence": "635/105",
-                    "photoPath": "./assets/imgs/dagobertduck.jpg"},
-                    {"firstname": "Zwarte", 
-                    "infix": "",
-                    "lastname": "Magica",
-                    "age": 108,
-                    "residence": "Duckstad",
-                    "absence": "635/635",
-                    "photoPath": "./assets/imgs/magica.png"},
-                    {"firstname": "Kwik", 
-                    "infix": "Kwek",
-                    "lastname": "Kwak",
-                    "age": 23,
-                    "residence": "Duckstad",
-                    "absence": "635/0",
-                    "photoPath": "./assets/imgs/kwikkwekkwak.png"}];
+  private users = [];
 
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, public gradesProvider: GradesProvider) {
-    this.gradesProvider.getGrades().subscribe((data: any[]) => {
-      console.log(data);
-    });
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public gradesProvider: GradesProvider) {              
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Am1bPage');
+    this.gradesProvider.getGrades().subscribe((data: any[]) => {
+      console.log(data);
+      this.users = data;
+    });
   }
 
+  public age(birthday) {
+    // getFullMonth() geeft de correcte maand weer gebruik dit om de leeftijd
+    // nauwkeuriger te beoordelen.
+    let date_now = new Date();
+    let date = new Date(birthday);
+    console.log(date.getFullYear());
+    console.log(date_now.getFullYear());
+    return date_now.getFullYear() - date.getFullYear();
+  }
 }

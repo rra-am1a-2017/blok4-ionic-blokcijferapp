@@ -10,7 +10,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class GradesProvider {
 
-  private url: string = "../../assets/data.json";
+  // private url: string = "../../assets/data.json";
+  private url: string = "http://blokcijferapp-am1a.nl/data.php";
 
   constructor(public http: HttpClient) {
     console.log('Hello GradesProvider Provider');

@@ -36,6 +36,7 @@ export class Am1aPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Am1aPage');
+    
   }
 
 }
