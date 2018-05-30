@@ -37,8 +37,12 @@ export class Am1bPage {
     // nauwkeuriger te beoordelen.
     let date_now = new Date();
     let date = new Date(birthday);
-    console.log(date.getFullYear());
-    console.log(date_now.getFullYear());
+    // console.log(date.getFullYear());
+    // console.log(date_now.getFullYear());
     return date_now.getFullYear() - date.getFullYear();
+  }
+
+  public changeResidence(residence) {
+    console.log("Mijn woonplaats is: " + residence );
   }
 }

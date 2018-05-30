@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>am1b</ion-title>
+    <ion-title text-center>am1b</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -19,7 +19,7 @@
         {{user.firstname}} {{user.infix}} {{user.lastname}}
       </ion-card-title>
       <h5>Woonplaats</h5>
-      <p>{{user.residence}}</p>
+      <p (click)="changeResidence(user.residence)">{{user.residence}}</p>
       <h5>Leeftijd</h5>
       <p>{{age(user.birthday)}}</p>
       <h5>Absentie</h5>
