@@ -44,19 +44,20 @@ export class Am1bPage {
     return date_now.getFullYear() - date.getFullYear();
   }
 
-  public changeResidence(residence) {
+  public changeResidence(id, residence) {
     console.log("Mijn woonplaats is: " + residence );
 
-    let changeResidenceInDb = this.alertCtrl.create({title: "Huidige woonplaats " + residence,
+    let changeResidenceInDb = this.alertCtrl.create({title: "Huidige woonplaats " + residence + " | id: " + id,
                                                      message: "Voer een nieuwe woonplaats in:",
                                                      inputs: [{type: "text",
                                                               name: "newResidence"}],
                                                      buttons: [{text: "Annuleren"},
                                                                {text: "Wijzig",
-                                                                handler:  (alertData) => {
+                                                                handler:  (alertData) => { // arrow functies
                                                                   console.log(alertData.newResidence);
-                                                                  this.gradesProvider.updateResidence(alertData.newResidence).subscribe((data: any[]) => {
+                                                                  this.gradesProvider.updateResidence(id, alertData.newResidence).subscribe((data: any[]) => {
                                                                     console.log(data);
+                                                                    this.navCtrl.push(Am1bPage);
                                                                   });
                                                                 }}]
                                                     });

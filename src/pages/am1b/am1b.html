@@ -19,11 +19,11 @@
         {{user.firstname}} {{user.infix}} {{user.lastname}}
       </ion-card-title>
       <h5>Woonplaats</h5>
-      <p (click)="changeResidence(user.residence)">{{user.residence}}</p>
+      <p (click)="changeResidence(user.id, user.residence)">{{user.residence}}</p>
       <h5>Leeftijd</h5>
       <p>{{age(user.birthday)}}</p>
       <h5>Absentie</h5>
-      <p>{{user.absence}}</p>
+      <p >{{user.absence}}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

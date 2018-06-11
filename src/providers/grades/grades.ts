@@ -24,9 +24,10 @@ export class GradesProvider {
   }
 
 
-  public updateResidence(residence) {
+  public updateResidence(id, residence) {
 
     let params = new HttpParams();
+    params = params.set("id", id );    
     params = params.set("residence", residence );
 
     return this.http.post(this.url_update_residence, params, {responseType: "json"});
