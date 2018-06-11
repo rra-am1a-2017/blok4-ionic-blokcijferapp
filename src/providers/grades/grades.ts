@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -12,6 +12,7 @@ export class GradesProvider {
 
   // private url: string = "../../assets/data.json";
   private url: string = "http://blokcijferapp-am1a.nl/data.php";
+  private url_update_residence: string = "http://blokcijferapp-am1a.nl/update_residence.php";
 
   constructor(public http: HttpClient) {
     console.log('Hello GradesProvider Provider');
@@ -20,6 +21,15 @@ export class GradesProvider {
   // Een functie in een klasse heet een method
   public getGrades() {
     return this.http.get(this.url, {responseType: "json"});
+  }
+
+
+  public updateResidence(residence) {
+
+    let params = new HttpParams();
+    params = params.set("residence", residence );
+
+    return this.http.post(this.url_update_residence, params, {responseType: "json"});
   }
 
 }

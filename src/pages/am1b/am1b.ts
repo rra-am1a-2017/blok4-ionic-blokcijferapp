@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, } from 'ionic-angular';
 import { GradesProvider } from '../../providers/grades/grades';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the Am1bPage page.
@@ -21,7 +22,8 @@ export class Am1bPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public gradesProvider: GradesProvider) {              
+              public gradesProvider: GradesProvider,
+              public alertCtrl: AlertController) {              
   }
 
   ionViewDidLoad() {
@@ -44,5 +46,23 @@ export class Am1bPage {
 
   public changeResidence(residence) {
     console.log("Mijn woonplaats is: " + residence );
+
+    let changeResidenceInDb = this.alertCtrl.create({title: "Huidige woonplaats " + residence,
+                                                     message: "Voer een nieuwe woonplaats in:",
+                                                     inputs: [{type: "text",
+                                                              name: "newResidence"}],
+                                                     buttons: [{text: "Annuleren"},
+                                                               {text: "Wijzig",
+                                                                handler:  (alertData) => {
+                                                                  console.log(alertData.newResidence);
+                                                                  this.gradesProvider.updateResidence(alertData.newResidence).subscribe((data: any[]) => {
+                                                                    console.log(data);
+                                                                  });
+                                                                }}]
+                                                    });
+
+    changeResidenceInDb.present();
   }
+
+
 }
